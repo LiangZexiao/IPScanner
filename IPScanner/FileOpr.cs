@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 namespace IPScanner
 {
@@ -34,15 +35,7 @@ namespace IPScanner
         [DllImport("kernel32")]
         public static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retval, int size, string filePath);
 
-        private string strFilePath ="";//获取INI文件路径
-
         #endregion
 
-        public FileOpr(string FilePath)
-        {
-            this.strFilePath = FilePath;
-        }
-
-        
     }
 }

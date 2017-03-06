@@ -21,5 +21,6 @@ namespace IPScanner
             }
             return builder.ToString();
         }
+
     }
 }

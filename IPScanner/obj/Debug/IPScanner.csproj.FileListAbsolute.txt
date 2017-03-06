@@ -19,3 +19,12 @@ D:\我的文档\Visual Studio 2013\Projects\IPScanner2\IPScanner\obj\Debug\IPSca
 D:\我的文档\Visual Studio 2013\Projects\IPScanner\IPScanner\bin\Debug\IPScanner.exe.config
 D:\我的文档\Visual Studio 2013\Projects\IPScanner\IPScanner\obj\Debug\IPScanner.exe
 D:\我的文档\Visual Studio 2013\Projects\IPScanner\IPScanner\obj\Debug\IPScanner.pdb
+D:\我的文档\GitHub\IPScanner\IPScanner\bin\Debug\IPScanner.exe.config
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.exe
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.pdb
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.csprojResolveAssemblyReference.cache
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.Form1.resources
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.Properties.Resources.resources
+D:\我的文档\GitHub\IPScanner\IPScanner\obj\Debug\IPScanner.csproj.GenerateResource.Cache
+D:\我的文档\GitHub\IPScanner\IPScanner\bin\Debug\IPScanner.exe
+D:\我的文档\GitHub\IPScanner\IPScanner\bin\Debug\IPScanner.pdb

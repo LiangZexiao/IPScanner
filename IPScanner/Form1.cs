@@ -22,6 +22,7 @@ namespace IPScanner
            
             InitializeComponent();
             textBox1.Enabled = false;
+            comboBox1.Enabled = false;
         }
 
         private void 扫描IPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,7 +34,8 @@ namespace IPScanner
         {
             //FileOpr opr = new FileOpr(Application.StartupPath + "\\opcsvc.ini");
             StringBuilder result = new StringBuilder();
-            FileOpr.GetPrivateProfileString("DefaultHosts", "Machine01", "", result, 1024, Application.StartupPath + "\\opcsvc.ini");
+            string machine_name = comboBox1.SelectedItem.ToString();
+            FileOpr.GetPrivateProfileString("DefaultHosts", machine_name, "", result, 1024, Application.StartupPath + "\\opcsvc.ini");
 
             MessageBox.Show(result.ToString());
         }
@@ -43,10 +45,21 @@ namespace IPScanner
             for (int i = 0; i < listBox1.SelectedItems.Count; i++)
             {
                 string machine_name = "Machine" + i.ToString();
+
+                comboBox1.Enabled = true;
+                comboBox1.Items.Add(machine_name);
+                comboBox1.SelectedItem = comboBox1.Items[0];
+                
                 FileOpr.WritePrivateProfileString("DefaultHosts", machine_name, listBox1.SelectedItems[i].ToString(), Application.StartupPath + "\\opcsvc.ini");
             }
             MessageBox.Show("Successful");
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /********************************************************************************/
         public IPAddress GetLocalIP()
         {
@@ -84,6 +97,8 @@ namespace IPScanner
                 listBox1.Items.Add(e.Reply.Address.ToString());
             }         
         }
+
+
 
 
 
