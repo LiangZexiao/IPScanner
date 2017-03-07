@@ -34,14 +34,26 @@ namespace IPScanner
         {
             //FileOpr opr = new FileOpr(Application.StartupPath + "\\opcsvc.ini");
             StringBuilder result = new StringBuilder();
-            string machine_name = comboBox1.SelectedItem.ToString();
-            FileOpr.GetPrivateProfileString("DefaultHosts", machine_name, "", result, 1024, Application.StartupPath + "\\opcsvc.ini");
+            if (comboBox1.SelectedItem != null)
+            {
+                string machine_name = comboBox1.SelectedItem.ToString();
+                FileOpr.GetPrivateProfileString("DefaultHosts", machine_name, "", result, 1024, Application.StartupPath + "\\opcsvc.ini");
+                MessageBox.Show(result.ToString());
+            }
+            else
+            {
+                MessageBox.Show("请先选择机器名");
+            }
 
-            MessageBox.Show(result.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItems.Count == 0) 
+            {
+                MessageBox.Show("请先选择要添加的IP地址");
+                return;
+            }
             for (int i = 0; i < listBox1.SelectedItems.Count; i++)
             {
                 string machine_name = "Machine" + i.ToString();
