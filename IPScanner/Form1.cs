@@ -11,6 +11,7 @@ using System.Collections;
 
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Collections.Specialized;
 
 
 namespace IPScanner
@@ -73,6 +74,7 @@ namespace IPScanner
         }
 
         /********************************************************************************/
+        //扫描得本地IP
         public IPAddress GetLocalIP()
         {
             foreach (IPAddress _ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
@@ -85,9 +87,10 @@ namespace IPScanner
             return IPAddress.None;
         }
 
+        //同时发送225个ping指令
         public void ScanIP()
         {
-            for (int i = 1; i < 225; i++)
+            for (int i = 1; i < 255; i++)
             {
                 Ping myPing;
                 myPing = new Ping();
@@ -102,6 +105,7 @@ namespace IPScanner
             }
         }
        
+        //Ping指令异步接受到回应触发
         private void _myPing_PingCompleted(object sender, PingCompletedEventArgs e)
         {
             if (e.Reply.Status == IPStatus.Success)
@@ -110,12 +114,49 @@ namespace IPScanner
             }         
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            INIClass inihelper = new INIClass(Application.StartupPath + "\\opcsvc.ini");
+            //string[] address;
+            List<string> result = new List<string>();
+            if(inihelper.ExistINIFile())
+            {
+                result = inihelper.ReadSections(Application.StartupPath + "\\opcsvc.ini");
+               
+                foreach (string item in result)
+                {
+                    listBox2.Items.Add(item.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("File dosen't exist");
+            }
 
 
+        }
 
-
-
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            byte[] result;
+            INIClass inihelper = new INIClass(Application.StartupPath + "\\opcsvc.ini");
+            if(inihelper.ExistINIFile())
+            {
+                result = inihelper.IniReadValues("DefaultHosts", null);
+                string value = Encoding.Default.GetString(result);
+                string[] list= value.Split('\0');
+                foreach (string item in list)
+                {
+                    if(item!="")
+                    {
+                        string _value = inihelper.IniReadValue("DefaultHosts", item);
+                        listBox2.Items.Add(item+":"+_value);
+                    }
+                }
+                //MessageBox.Show(value);
+            }
+            
+        }
 
     }
 }

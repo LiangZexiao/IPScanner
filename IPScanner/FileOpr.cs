@@ -34,6 +34,8 @@ namespace IPScanner
         /// <returns></returns>
         [DllImport("kernel32")]
         public static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retval, int size, string filePath);
+        [DllImport("Kernel32.dll")]
+        public static extern int GetPrivateProfileString(string section, string key, string def, Byte[] lpReturnedString, int size, string filePath);
 
         #endregion
 
