@@ -153,7 +153,6 @@ namespace IPScanner
                         listBox2.Items.Add(item+":"+_value);
                     }
                 }
-                //MessageBox.Show(value);
             }
             
         }
